@@ -213,13 +213,13 @@ $common_contents = \common\models\CommonContents::findOne(1);
                                                                 <?= Html::a('Watches', ['/product/index', 'category' => 'watches'], ['class' => 'link']) ?>
                                                             </li>
                                                             <li class="nav-list">
-                                                                <?= Html::a('Part Sale', ['/product/index', 'type' => 'part-sale'], ['class' => 'link']) ?>
+                                                                <?= Html::a('Part Sale', ['/product/index', 'category' => 'part-sale'], ['class' => 'link']) ?>
                                                             </li>
                                                             <li class="nav-list">
-                                                                <?= Html::a('Best Selling', ['/product/index', 'type' => 'best-selling'], ['class' => 'link']) ?>
+                                                                <?= Html::a('Best Selling', ['/product/index', 'category' => 'best-selling'], ['class' => 'link']) ?>
                                                             </li>
                                                             <li class="nav-list">
-                                                                <?= Html::a('New Arrival', ['/product/index', 'type' => 'new-arrival'], ['class' => 'link']) ?>
+                                                                <?= Html::a('New Arrival', ['/product/index', 'category' => 'new-arrival'], ['class' => 'link']) ?>
                                                             </li>
                                                         </ul>
                                                     </div>

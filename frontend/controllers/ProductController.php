@@ -83,6 +83,12 @@ class ProductController extends \yii\web\Controller {
             return $dataProvider->query->andWhere(['main_category' => 1]);
         } elseif ($category == "watches") {
             return $dataProvider->query->andWhere(['main_category' => 2]);
+        } elseif ($category == "part-sale") {
+            $dataProvider->query->andWhere(new Expression('FIND_IN_SET(:type, type)'))->addParams([':type' => 1]);
+        } elseif ($category == "best-selling") {
+            $dataProvider->query->andWhere(new Expression('FIND_IN_SET(:type, type)'))->addParams([':type' => 2]);
+        } elseif ($category == "new-arrival") {
+            $dataProvider->query->andWhere(new Expression('FIND_IN_SET(:type, type)'))->addParams([':type' => 3]);
         }
         return $dataProvider;
     }
@@ -90,7 +96,6 @@ class ProductController extends \yii\web\Controller {
     public function FilterType($dataProvider, $type) {
         $type_name = explode(',', $type);
         $gender_arr_data = [];
-        $protype_arr_data = '';
         if (!empty($type_name)) {
             foreach ($type_name as $type) {
                 $gender = '';
@@ -103,26 +108,14 @@ class ProductController extends \yii\web\Controller {
                     $gender = 3;
                 } elseif ($type == 'oriental') {
                     $gender = 4;
-                } elseif ($type == 'part-sale') {
-                    $pro_type = 1;
-                } elseif ($type == 'best-selling') {
-                    $pro_type = 2;
-                } elseif ($type == 'new-arrival') {
-                    $pro_type = 3;
                 }
                 if ($gender != '') {
                     $gender_arr_data[] = $gender;
-                }
-                if ($pro_type != '') {
-                    $protype_arr_data = $pro_type;
                 }
             }
         }
         if (!empty($gender_arr_data)) {
             $dataProvider->query->andWhere(['gender_type' => $gender_arr_data]);
-        }
-        if (!empty($protype_arr_data)) {
-            $dataProvider->query->andWhere(new Expression('FIND_IN_SET(:type, type)'))->addParams([':type' => $protype_arr_data]);
         }
         return $dataProvider;
     }
