@@ -246,10 +246,6 @@ AppAsset::register($this);
                                 <?= Html::a('<i class="fa fa-backward"></i><span class="title">Return Order</span>', ['/order/order-master/return'], ['class' => 'title']) ?>
                             </li>
                             <li>
-                                <?= Html::a('<i class="fa fa-camera-retro"></i><span class="title">Cancelled Order</span>', ['/order/order-master/user-cancel'], ['class' => 'title']) ?>
-                            </li>
-
-                            <li>
                                 <?= Html::a('<i class="fa fa-cube"></i><span class="title">Promotions</span>', ['/promotions/promotions/index'], ['class' => 'title']) ?>
                             </li>
                             <li>

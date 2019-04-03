@@ -1,7 +1,10 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+if (isset($meta_title) && $meta_title != '')
+    $this->title = $meta_title;
+else
+    $this->title = 'Almukhalath Perfume';
 ?>
 <?php
 if (!empty($sliders)) {
@@ -88,16 +91,17 @@ if (!empty($our_categories)) {
         </div>
     </div>
 </section>
-
-<section id="our-perfume">
-    <div class="container">
-        <div class="main_head">
-            <div class="head">Our Perfume</div>
-            <div class="sub-head">Best Quality Products</div>
-        </div>
-        <div class="row">
-            <?php
-            if (!empty($our_perfumes)) {
+<?php
+if (!empty($our_perfumes) && $our_perfumes->product_id != '') {
+    ?>
+    <section id="our-perfume">
+        <div class="container">
+            <div class="main_head">
+                <div class="head">Our Perfume</div>
+                <div class="sub-head">Best Quality Products</div>
+            </div>
+            <div class="row">
+                <?php
                 $our_perfumes_lists = explode(',', $our_perfumes->product_id);
 
                 $i = 0;
@@ -117,27 +121,29 @@ if (!empty($our_categories)) {
                         break;
                     }
                 }
-            }
-            ?>
+                ?>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
+    <?php
+}
+?>
 <section id="discount-ad">
     <div class="self-container">
         <img src="<?= yii::$app->homeUrl; ?>uploads/cms/home-content/offer/<?= $home_contents->id ?>/large.<?= $home_contents->delivery_information ?>?<?= rand() ?>" alt="" class="img-fluid" />
     </div>
 </section>
-
-<section id="our-watches">
-    <div class="container">
-        <div class="main_head">
-            <div class="head">Our Watches</div>
-            <div class="sub-head">Best Quality Products</div>
-        </div>
-        <div class="row">
-            <?php
-            if (!empty($our_watches)) {
+<?php
+if (!empty($our_watches) && $our_watches->product_id != '') {
+    ?>
+    <section id="our-watches">
+        <div class="container">
+            <div class="main_head">
+                <div class="head">Our Watches</div>
+                <div class="sub-head">Best Quality Products</div>
+            </div>
+            <div class="row">
+                <?php
                 $our_watches_lists = explode(',', $our_watches->product_id);
 
                 $i = 0;
@@ -157,21 +163,24 @@ if (!empty($our_categories)) {
                         break;
                     }
                 }
-            }
-            ?>
+                ?>
+            </div>
         </div>
-    </div>
-</section>
-
-<section id="our-gifts">
-    <div class="container">
-        <div class="main_head">
-            <div class="head">Our Gifts</div>
-            <div class="sub-head">Best Quality Products</div>
-        </div>
-        <div class="row">
-            <?php
-            if (!empty($our_gifts)) {
+    </section>
+    <?php
+}
+?>
+<?php
+if (!empty($our_gifts) && $our_gifts->product_id != '') {
+    ?>
+    <section id="our-gifts">
+        <div class="container">
+            <div class="main_head">
+                <div class="head">Our Gifts</div>
+                <div class="sub-head">Best Quality Products</div>
+            </div>
+            <div class="row">
+                <?php
                 $our_gifts_lists = explode(',', $our_gifts->product_id);
 
                 $i = 0;
@@ -191,12 +200,13 @@ if (!empty($our_categories)) {
                         break;
                     }
                 }
-            }
-            ?>
+                ?>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
+    <?php
+}
+?>
 <section id="site-speciality">
     <div class="container">
         <div class="row">

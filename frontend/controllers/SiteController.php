@@ -105,25 +105,11 @@ class SiteController extends Controller {
     public function actionAbout() {
 
         $about = About::find()->where(['id' => 1])->one();
-        $meta_tags = CmsMetaTags::find()->where(['id' => 1])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 2])->one();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
         return $this->render('about', [
                     'about' => $about,
-                    'meta_title' => $meta_tags->meta_title,
-        ]);
-    }
-
-    /**
-     * Displays Store Locator Page .
-     *
-     * @return mixed
-     */
-    public function actionStoreLocator() {
-        $meta_tags = CmsMetaTags::find()->where(['id' => 4])->one();
-        \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
-        \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
-        return $this->render('store-locator', [
                     'meta_title' => $meta_tags->meta_title,
         ]);
     }
@@ -137,7 +123,7 @@ class SiteController extends Controller {
         $status = '';
         $model = new ContactUs();
         $contact = ContactPage::findOne(1);
-        $meta_tags = CmsMetaTags::find()->where(['id' => 7])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 3])->one();
         $branches = \common\models\Branches::find()->where(['status' => 1])->orderBy(['id' => SORT_DESC])->all();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
@@ -168,7 +154,7 @@ class SiteController extends Controller {
             $this->redirect(['/site/index']);
         }
         $model_login = new LoginForm();
-        $meta_tags = CmsMetaTags::find()->where(['id' => 16])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 4])->one();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
         if ($model_login->load(Yii::$app->request->post()) && $model_login->login()) {
@@ -194,7 +180,7 @@ class SiteController extends Controller {
      */
     public function actionSignup($go = NULL) {
         $model = new SignupForm();
-        $meta_tags = CmsMetaTags::find()->where(['id' => 13])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 5])->one();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -279,7 +265,7 @@ class SiteController extends Controller {
 
     public function actionTermsAndConditions() {
         $model = Principals::findOne(1);
-        $meta_tags = CmsMetaTags::find()->where(['id' => 9])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 6])->one();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
         return $this->render('terms_condition', [
@@ -290,7 +276,7 @@ class SiteController extends Controller {
 
     public function actionPrivacyPolicy() {
         $model = Principals::findOne(1);
-        $meta_tags = CmsMetaTags::find()->where(['id' => 11])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 7])->one();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
         return $this->render('privacy_policy', [
@@ -301,7 +287,7 @@ class SiteController extends Controller {
 
     public function actionReturnPolicy() {
         $model = Principals::findOne(1);
-        $meta_tags = CmsMetaTags::find()->where(['id' => 9])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 8])->one();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
         return $this->render('return_policy', [
@@ -312,7 +298,7 @@ class SiteController extends Controller {
 
     public function actionDeliveryInformation() {
         $model = Principals::findOne(1);
-        $meta_tags = CmsMetaTags::find()->where(['id' => 12])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 9])->one();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
         return $this->render('delivery_information', [
@@ -323,7 +309,7 @@ class SiteController extends Controller {
 
     public function actionFaq() {
         $model = Principals::findOne(1);
-        $meta_tags = CmsMetaTags::find()->where(['id' => 12])->one();
+        $meta_tags = CmsMetaTags::find()->where(['id' => 10])->one();
         \Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $meta_tags->meta_keyword]);
         \Yii::$app->view->registerMetaTag(['name' => 'description', 'content' => $meta_tags->meta_description]);
         return $this->render('faq', [
